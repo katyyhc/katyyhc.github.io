@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Fall2020_Data Visualization_Assignment 4</title>
+    <script src="https://cdn.jsdelivr.net/npm/vega@5.16.1"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@4.16.2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.12.2"></script>
+  </head>
+  <body>
+      <p>
+      This page is aiming to present visualizations of Illinois building inventory data.
+      </p>
+      <p>
+      The below bar chart is summarizing the <strong>total square footage</strong> for each <strong>Congressional District</strong>.
+      </p>
+      <div id="viz">
+      </div>
+      <script>
+          
+var vlSpec = {
+              "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+              "data": {"url": "https://raw.githubusercontent.com/katyyhc/katyyhc.github.io/master/building_inventory.csv"},
+              "mark": "bar",
+              "encoding": {
+                    "x": {"field": "Congress Dist", "type": "quantitative", "title": "Congressional District"},
+                    "y": {"field": "Square Footage","aggregate": "sum", "type": "quantitative", "title": "Total Square Footage"}
+                          }
+              };
+          
+        vegaEmbed('#viz', vlSpec);
+      </script>
+  </body>
+</html>
